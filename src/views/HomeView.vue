@@ -1,0 +1,30 @@
+<script setup lang="ts">
+import { mdiAccount } from '@mdi/js';
+// @ts-ignore: JS Dep
+import SvgIcon from '@jamescoyle/vue-icon';
+import router from '@/router';
+
+
+</script>
+
+<template>
+  <div>
+    <div class="flex flex-row justify-between items-center gap-6 p-6">
+      <div class="flex flex-col gap-2">
+        <img src="/Logo.svg" class="w-56"/>
+        <span>Ваш помощник на дороге</span>
+      </div>
+      <button class="flex flex-col items-center align-center text-gray-400 active:text-gray-500 duration-75" @click="router.push('/auth')">
+        <SvgIcon type="mdi" :path="mdiAccount"/>
+        <span class="text-xs"> Авторизация </span>
+      </button>
+    </div>
+    <div>
+      <img type="image/png" src="/bmw.png" class="mt-20 ml-auto">
+      <div class="mt-8 px-6 flex flex-col gap-2">
+        <span class="text-3xl font-semibold text-white"> Добро пожаловать! </span>
+        <span>Тут должно быть поисание нашего сервиса, но его пока не придумали</span>
+      </div>
+    </div>
+  </div>
+</template>
