@@ -24,7 +24,7 @@ const credentials = reactive({
         <NButton size="large" tertiary :disabled="!(credentials?.email && credentials?.password)"> Продолжить</NButton>
         <span class="text-sm self-center mt-12">Нет аккаунта?</span>
         <NButton size="large" tertiary> Зарегистрируйтесь </NButton>
-        <NButton size="large" text @click="$router.push('/car/demo')"> ... Или попробуйте демо-режим </NButton>
+        <NButton size="large" text @click="$router.push('/cars')"> ... Или попробуйте демо-режим </NButton>
       </div>
     </div>
   </div>
