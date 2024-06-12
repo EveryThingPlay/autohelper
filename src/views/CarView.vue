@@ -9,7 +9,7 @@ import { NButton } from 'naive-ui'
 
 <template>
   <div class="p-6">
-    <n-button text>
+    <n-button text  @click="$router.push('/cars')">
       <template #icon>
         <svg-icon :path="mdiArrowLeft" type="mdi"/>
       </template>
