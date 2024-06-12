@@ -18,7 +18,7 @@ const cars = [{
     <CAppBar screen-name="Мои автомобили"/>
     <div class="flex flex-col gap-4">
       <div class="list flex flex-col gap-4 mb-6">
-        <CCarElement :title="car.title" :mileage="car.mileage" :lastService="car.lastService" :lastServiceMileage="car.lastServiceMileage" v-for="car in cars" :key="car.id"/>
+        <CCarElement :title="car.title" :mileage="car.mileage" :lastService="car.lastService" :lastServiceMileage="car.lastServiceMileage" v-for="car in cars" :key="car.id" @click="$router.push('/car/demo')"/>
       </div>
       <NButton text class="self-center" @click="$router.push('/')"> Выйти из аккаунта </NButton>
     </div>
