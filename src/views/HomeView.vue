@@ -14,7 +14,7 @@ import router from '@/router';
         <img src="/Logo.svg" class="w-56"/>
         <span>Ваш помощник на дороге</span>
       </div>
-      <button class="flex flex-col items-center align-center text-gray-400 active:text-gray-500 duration-75" @click="router.push('/auth')">
+      <button class="flex flex-col items-center align-center text-gray-400 active:text-gray-500 duration-75" @click="router.push('/auth/login')">
         <SvgIcon type="mdi" :path="mdiAccount"/>
         <span class="text-xs"> Авторизация </span>
       </button>
