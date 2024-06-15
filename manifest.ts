@@ -2,6 +2,7 @@ export default {
   name: 'Autohelper',
   short_name: 'Autohelper',
   description: 'Autohelper - приложение-помощник для автовледельцев',
+  display: 'standalone',
   theme_color: '#1D1D1D',
   background_color: '#1D1D1D',
   orientation: 'portrait',

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NInput, NButton } from 'naive-ui'
-import { reactive } from 'vue';
+import { reactive, computed } from 'vue';
 
 const credentials = reactive({
   username: '',

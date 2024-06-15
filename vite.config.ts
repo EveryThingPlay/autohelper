@@ -2,7 +2,9 @@ import { fileURLToPath, URL } from 'node:url'
 import { VitePWA } from 'vite-plugin-pwa'
 
 import { defineConfig } from 'vite'
+
 import manifest from './manifest'
+
 import vue from '@vitejs/plugin-vue'
 import mkcert from 'vite-plugin-mkcert'
 import VueDevTools from 'vite-plugin-vue-devtools'
@@ -12,14 +14,20 @@ import path from 'node:path'
 export default defineConfig({
   plugins: [
     VitePWA({
-      injectRegister: 'script',
+      registerType: 'autoUpdate',
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,vue}']
       },
+      includeAssets: [
+          "**/*",
+      ],
       devOptions: {
-        enabled: true
+        enabled: true,
+        type: 'module',
+        navigateFallbackAllowlist: [/^index.html$/]
       },
-      manifest
+      // @ts-ignore
+      manifest,
     }),
     vue(),
     VueDevTools(),
