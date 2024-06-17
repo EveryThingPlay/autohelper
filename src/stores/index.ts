@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import router from '../router'
 // @ts-ignore
 import { fetchWrapper } from '../helpers';
+import { ref } from 'vue';
 
 const baseUrl = `${import.meta.env.VITE_API_URL}/users`;
 
@@ -32,3 +33,13 @@ export const useAuthStore = defineStore({
         }
     }
 });
+
+export const useInvoiceStore = defineStore('invoice', ()=>{
+    const title = ref<string>('')
+    const cost = ref<number>(0)
+    const date = ref<Date|undefined>()
+    const comment = ref<string>('')
+    const mileage = ref<number>(0)
+
+    return { title, cost, date, comment, mileage }
+})

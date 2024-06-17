@@ -20,6 +20,7 @@ const cars = [{
       <div class="list flex flex-col gap-4 mb-6">
         <CCarElement :title="car.title" :mileage="car.mileage" :lastService="car.lastService" :lastServiceMileage="car.lastServiceMileage" v-for="car in cars" :key="car.id" @click="$router.push('/car/demo')"/>
       </div>
+      <!-- <NButton text class="self-center" @click="$router.push('/cars/add')"> Добавить автомобиль </NButton> -->
       <NButton text class="self-center" @click="$router.push('/')"> Выйти из аккаунта </NButton>
     </div>
   </div>

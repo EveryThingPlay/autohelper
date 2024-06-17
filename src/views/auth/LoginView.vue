@@ -21,7 +21,7 @@ const credentials = reactive({
       <div class="flex flex-col justify-center mt-12 gap-4">
         <NInput size="large" placeholder="Электронная почта" id="autohelper-email" v-model:value="credentials.email"/>
         <NInput size="large" placeholder="Пароль" type="password" id="autohelper-password" v-model:value="credentials.password"/>
-        <NButton size="large" tertiary :disabled="!(credentials?.email && credentials?.password)"> Продолжить</NButton>
+        <NButton size="large" tertiary :disabled="!(credentials?.email && credentials?.password)" @click="$router.push('/cars')"> Продолжить</NButton>
         <span class="text-sm self-center mt-12">Нет аккаунта?</span>
         <NButton size="large" tertiary @click="$router.replace('/auth/signup')"> Зарегистрируйтесь </NButton>
         <NButton size="large" text @click="$router.push('/cars')"> ... Или попробуйте демо-режим </NButton>

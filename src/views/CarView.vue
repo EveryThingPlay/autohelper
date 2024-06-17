@@ -4,6 +4,8 @@ import { mdiArrowLeft, mdiCarWash, mdiGasStation, mdiParking, mdiToolbox, mdiBan
 import SvgIcon from '@jamescoyle/vue-icon';
 
 import { NButton } from 'naive-ui'
+import { useInvoiceStore } from '@/stores';
+import router from '@/router';
 
 const menus = [
   {
@@ -12,22 +14,22 @@ const menus = [
       {
         icon: mdiCarWash,
         text: "Автомойка",
-        onClick: ()=>{}
+        onClick: (title:string)=>{toInvoice(title)}
       },
       {
         icon: mdiGasStation,
         text: "Заправка",
-        onClick: ()=>{}
+        onClick: (title:string)=>{toInvoice(title)}
       },
       {
         icon: mdiParking,
         text: "Парковка",
-        onClick: ()=>{}
+        onClick: (title:string)=>{toInvoice(title)}
       },
       {
         icon: mdiToolbox,
         text: "Тех. обслуживание",
-        onClick: ()=>{}
+        onClick: (title:string)=>{toInvoice(title)}
       }
     ]
   },
@@ -37,26 +39,32 @@ const menus = [
       {
         icon: mdiBank,
         text: "Финансы",
-        onClick: ()=>{}
+        onClick: (title:string)=>{toInvoice(title)}
       },
       {
         icon: mdiChartBar,
         text: "Данные",
-        onClick: ()=>{},
+        onClick: (title:string)=>{toInvoice(title)},
       },
       {
         icon: mdiWarehouse,
         text: "Гараж",
-        onClick: ()=>{}
+        onClick: (title:string)=>{toInvoice(title)}
       },
       {
         icon: mdiMenu,
         text: 'Прочее',
-        onClick: ()=>{}
+        onClick: (title:string)=>{toInvoice(title)}
       }
     ]
   }
 ]
+
+function toInvoice(title: string) {
+  useInvoiceStore().title = title
+  router.push('/invoice')
+}
+
 </script>
 
 <template>
@@ -83,7 +91,7 @@ const menus = [
         <div class="fastActions flex flex-col gap-2" v-for="menu in menus" :key="menu.title">
           <span class="text-sm font-semibold">{{ menu.title }}</span>
           <div class="grid grid-cols-4 gap-2 w-full justify-items-center ">
-            <button class="flex flex-col gap-2 w-16 active:scale-95 duration-75 items-center" v-for="button in menu.actions" :key="button.text" @click="button.onClick()">
+            <button class="flex flex-col gap-2 w-16 active:scale-95 duration-75 items-center" v-for="button in menu.actions" :key="button.text" @click="button.onClick(button.text)">
               <svg-icon type="mdi" :path="button.icon" class="h-12 w-12"/>
               <span class="text-xs">{{ button.text }}</span>
             </button>
