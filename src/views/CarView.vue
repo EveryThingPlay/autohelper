@@ -4,9 +4,23 @@ import { mdiArrowLeft, mdiCarWash, mdiGasStation, mdiParking, mdiToolbox, mdiBan
 import SvgIcon from '@jamescoyle/vue-icon';
 
 import { NButton } from 'naive-ui'
-import { useInvoiceStore } from '@/stores';
+import { useAuthStore, useCarsStore, useInvoiceStore } from '@/stores';
 import router from '@/router';
 
+const {demo} = useAuthStore()
+
+const car = demo? useCarsStore().demoCars.find( car => car.id === router.currentRoute.value.params.id ) : useCarsStore().cars.find( car => car.id === router.currentRoute.value.params.id )
+
+
+function toInvoice(title: string) {
+  useInvoiceStore().title = title
+  router.push('/invoice')
+}
+
+function toMileage() {
+  if (car)
+    router.push(`/car/${car.id}/mileage`)
+}
 const menus = [
   {
     title: "Быстрые действия",
@@ -43,8 +57,8 @@ const menus = [
       },
       {
         icon: mdiChartBar,
-        text: "Данные",
-        onClick: (title:string)=>{toInvoice(title)},
+        text: "Пробеги",
+        onClick: (title:string)=>{toMileage()},
       },
       {
         icon: mdiWarehouse,
@@ -59,11 +73,6 @@ const menus = [
     ]
   }
 ]
-
-function toInvoice(title: string) {
-  useInvoiceStore().title = title
-  router.push('/invoice')
-}
 
 </script>
 

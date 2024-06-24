@@ -1,15 +1,21 @@
 <script setup lang="ts">
+import { useAuthStore, useCarsStore } from '@/stores';
 import CAppBar from '../components/CAppBar.vue'
 import CCarElement from '../components/CCarElement.vue'
 import { NButton } from 'naive-ui';
+import { computed } from 'vue';
 
-const cars = [{
-  id: 1,
-  title: "BMW 530d G30",
-  mileage: 94860,
-  lastService: "05.04.2024",
-  lastServiceMileage: 89480,
-}]
+
+console.log("cars")
+
+const { cars, demoCars } = useCarsStore()
+const { demo } = useAuthStore()
+
+console.log(cars)
+
+const carsList = computed(()=> {
+  return demo ? demoCars : cars
+})
 
 </script>
 
@@ -18,7 +24,7 @@ const cars = [{
     <CAppBar screen-name="Мои автомобили"/>
     <div class="flex flex-col gap-4">
       <div class="list flex flex-col gap-4 mb-6">
-        <CCarElement :title="car.title" :mileage="car.mileage" :lastService="car.lastService" :lastServiceMileage="car.lastServiceMileage" v-for="car in cars" :key="car.id" @click="$router.push('/car/demo')"/>
+        <CCarElement :title="`${car.brand} ${car.model}`" :mileage="car.mileageHistory[car.mileageHistory.length]?.mileage" :lastService="car.lastService.locale('ru').format('DD.MM.YYYY')" :lastServiceMileage="car.lastServiceMileage" v-for="car of carsList" :key="car.id" @click="$router.push(`/car/${car.id}`)"/>
       </div>
       <!-- <NButton text class="self-center" @click="$router.push('/cars/add')"> Добавить автомобиль </NButton> -->
       <NButton text class="self-center" @click="$router.push('/')"> Выйти из аккаунта </NButton>

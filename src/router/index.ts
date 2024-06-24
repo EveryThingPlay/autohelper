@@ -30,6 +30,11 @@ const router = createRouter({
       component: () => import('../views/CarView.vue'),
     },
     {
+      path: '/car/:id/mileage',
+      name: 'car-id-mileage',
+      component: () => import('../views/CarMileage.vue'),
+    },
+    {
       path: '/invoice',
       name: 'invoice',
       component: () => import('../views/InvoiceView.vue')
