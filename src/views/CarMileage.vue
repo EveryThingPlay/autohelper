@@ -18,7 +18,7 @@ const isShowModal = ref(false)
 const currentMileage = computed(()=> car?.mileageHistory[car?.mileageHistory.length - 1]?.mileage ||  0)
 
 const newMileageValue = ref(currentMileage.value+1)
-const isValid = (x: number) => x > currentMileage.value+1
+const isValid = (x: number) => x >= currentMileage.value+1
 
 function addMileage(){
   car?.mileageHistory.push({mileage: newMileageValue.value, date: dayjs().format('YYYY.MM.DD'), reason: 'Запись вручную'})
@@ -63,6 +63,7 @@ function addMileage(){
         size="huge"
         role="dialog"
         aria-modal="true"
+        class="max-w-[500px]"
       >
         <div class="mb-1">Укажите пробег в километрах</div>
         <n-input-number size="large" v-model:value="newMileageValue" :validator="isValid"></n-input-number>
