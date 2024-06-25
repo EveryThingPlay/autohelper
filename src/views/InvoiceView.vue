@@ -47,6 +47,7 @@ const {title} = storeToRefs(useInvoiceStore())
           <n-input type="textarea" v-model:value="data.comment" placeholder="Введите комментарий.." class="!bg-transparent"></n-input>
         </div>
       </div>
+      <NButton text class="self-center" @click="$router.back()"> Назад </NButton>
     </div>
   </div>
 </template>
