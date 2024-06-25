@@ -14,13 +14,12 @@ const data = ref({
   cost: null,
 })
 
-const {title} = storeToRefs(useInvoiceStore())
 
 </script>
 
 <template>
   <div>
-    <CAppBar :screenName="title"></CAppBar>
+    <CAppBar tertiary screen-name="Добавить транспортное средство"/>
     <n-button text  @click="$router.back()">
         <template #icon>
           <svg-icon :path="mdiArrowLeft" type="mdi"/>
@@ -30,23 +29,44 @@ const {title} = storeToRefs(useInvoiceStore())
     <div class="mt-4 px-6 flex flex-col gap-4">
       <div class="flex flex-row gap-4 justify-center">
         <div class="flex bg-[#282828] h-20 w-48 flex-col gap-2 rounded-xl p-2">
+          <span class="text-xs font-bold text-white">Марка Автомобиля</span>
+          <div class="flex flex-row w-full items-center">
+          <n-input v-model:value="data.cost" placeholder="" class="text-2xl !bg-transparent"></n-input>
+        </div>
+        </div>
+        <div class="flex bg-[#282828] h-20 w-48 flex-col gap-2 rounded-xl p-2">
+          <span class="text-xs font-bold text-white">Модель Автомобиля</span>
+          <div class="flex flex-row w-full items-center">
+          <n-input v-model:value="data.cost" placeholder="" class="text-2xl !bg-transparent"></n-input>
+        </div>
+        </div>
+        <div class="flex bg-[#282828] h-20 w-48 flex-col gap-2 rounded-xl p-2">
           <span class="text-xs font-bold text-white">Пробег</span>
           <div class="flex flex-row w-full items-center gap-1">
             <n-input-number v-model:value="data.mileage" placeholder="" length="7" name="mileage" class="text-white w-28 focus:outline-none" />км
           </div>
         </div>
-        <div class="flex bg-[#282828] h-20 w-48 flex-col gap-2 rounded-xl p-2">
-          <span class="text-xs font-bold text-white">Дата</span>
-          <div class="flex flex-row w-full items-center">
-            <n-date-picker v-model:value="data.date" placeholder="" class="text-2xl !bg-transparent"></n-date-picker>
-          </div>
-        </div>
       </div>
-      <div class="flex bg-[#282828] h-20 flex-col gap-2 rounded-xl p-2">
-        <span class="text-xs font-bold text-white">Стоимость</span>
-        <div class="flex flex-row w-full items-center">
+
+      <div class="flex flex-row gap-4 justify-center">
+        <div class="flex bg-[#282828] h-20 w-48 flex-col gap-2 rounded-xl p-2">
+          <span class="text-xs font-bold text-white">Марка Автомобиля</span>
+          <div class="flex flex-row w-full items-center">
           <n-input v-model:value="data.cost" placeholder="" class="text-2xl !bg-transparent"></n-input>
-          <span>Руб.</span>
+        </div>
+        </div>
+        <div class="flex bg-[#282828] h-20 w-48 flex-col gap-2 rounded-xl p-2">
+          <span class="text-xs font-bold text-white">Тип топлива</span>
+          <div class="flex flex-row w-full items-center">
+          <n-input v-model:value="data.cost" placeholder="" class="text-2xl !bg-transparent"></n-input>
+        </div>
+        </div>
+        <div class="flex bg-[#282828] h-20 w-48 flex-col gap-2 rounded-xl p-2">
+          <span class="text-xs font-bold text-white">Стоимость</span>
+          <div class="flex flex-row w-full items-center">
+            <n-input v-model:value="data.cost" placeholder="" class="text-2xl !bg-transparent"></n-input>
+            <span>Руб.</span>
+        </div>
         </div>
       </div>
       <div class="flex bg-[#282828] flex-col gap-2 rounded-xl p-2">

@@ -92,7 +92,9 @@ const menus = [
         Мои автомобили
       </n-button>
       <div class="carView flex flex-col mt-12 gap-2">
-        <img src="/bmw_large.png" />
+        <div class="h-48 mb-4">
+          <img :src="`/cars/common/${car?.type}.png`" />
+        </div>
         <div class="flex flex-col gap-2">
           <span class="text-xl text-white font-semibold">{{ `${car?.brand} ${car?.model}` }} </span>
           <span> Пробег {{ mileage }} км</span>

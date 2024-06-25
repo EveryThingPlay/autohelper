@@ -14,11 +14,13 @@ type car = {
   model: string;
   year: number;
   mileageHistory: Array<MileageHistoryBlock>;
-  color: string,
-  type: string,
+  fuel: '92'|'95'|'98'|'D'|'electric'|'other',
+  type: 'sedan'|'suv'|'van',
   vin: string,
   lastService: Dayjs,
-  lastServiceMileage: number
+  lastServiceMileage: number,
+  price?: number,
+  comment?: string
 }
 
 export const useCarsStore = defineStore('cars', () => {
@@ -27,6 +29,7 @@ export const useCarsStore = defineStore('cars', () => {
       id: 'demo1',
       brand: 'BMW',
       model: '530d G30',
+      fuel: 'D',
       mileageHistory: [
         {
           mileage: 4798,
@@ -100,6 +103,7 @@ export const useCarsStore = defineStore('cars', () => {
       id: 'demo2',
       brand: 'Volkswagen',
       model: 'Caravelle',
+      fuel: 'D',
       mileageHistory: [
         {
           mileage: 4798,
@@ -162,7 +166,6 @@ export const useCarsStore = defineStore('cars', () => {
           date: '12.02.2022'
         },
       ],
-      color: 'white',
       type: 'van',
       year: 2016,
       vin: '000000000',
@@ -172,7 +175,7 @@ export const useCarsStore = defineStore('cars', () => {
     {
       id: 'demo3',
       brand: 'Toyota',
-      model: 'Highlander',
+      model: 'Land Cruiser 200',
       mileageHistory: [
         {
           mileage: 4798,
@@ -235,7 +238,7 @@ export const useCarsStore = defineStore('cars', () => {
           date: '12.02.2022'
         },
       ],
-      color: 'yellow',
+      fuel: '98',
       type: 'suv',
       year: 2012,
       vin: '000000000',

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { PropType } from 'vue';
-
 defineProps({
   title: {
     type: String,
@@ -8,7 +6,7 @@ defineProps({
   },
   mileage: {
     type: Number,
-    default: 75555,
+    default: 64759,
   },
   lastService: {
     type: String,
@@ -16,23 +14,21 @@ defineProps({
   },
   lastServiceMileage: {
     type: Number,
-    default: 0,
-  },
-  type: {
-    type: String as PropType<'sedan'|'suv'|'van'>,
-    default: 'sedan',
+    default: 6275,
   }
 })
 </script>
 
 <template>
   <button class="flex flex-row gap-2 items-center text-left active:scale-95 duration-75">
-    <img :src="`/cars/common/${type}.png`" class="w-32">
+    <img src="/VW1.png" class="h-16">
     <div class="flex flex-col gap-1">
       <span class="text-white text-lg font-semibold">{{ title }}</span>
       <div class="flex flex-col">
-        <span class="text-md">Пробег при последнем ТО: <p class="text-white">{{ mileage }} км</p></span>
+        <span class="text-md">Пробег <span class="text-white">{{ mileage }} км</span></span>
+        <span class="text-sm">Последнее Т/О - {{ lastServiceMileage }} км назад ({{ lastService }})</span>
       </div>
+      
     </div>
   </button>
 </template>
