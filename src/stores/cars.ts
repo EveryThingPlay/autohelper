@@ -170,7 +170,7 @@ export const useCarsStore = defineStore('cars', () => {
       lastServiceMileage: 89480
     },
     {
-      id: 'demo2',
+      id: 'demo3',
       brand: 'Toyota',
       model: 'Highlander',
       mileageHistory: [

@@ -6,6 +6,7 @@ import SvgIcon from '@jamescoyle/vue-icon';
 import { NButton } from 'naive-ui'
 import { useAuthStore, useCarsStore, useInvoiceStore } from '@/stores';
 import router from '@/router';
+import { computed } from 'vue';
 
 const {demo} = useAuthStore()
 
@@ -21,6 +22,11 @@ function toMileage() {
   if (car)
     router.push(`/car/${car.id}/mileage`)
 }
+
+const mileage = computed(() => car?.mileageHistory[car.mileageHistory.length - 1].mileage)
+const previousService = computed(() => car?.mileageHistory[car.mileageHistory.length - 2])
+
+
 const menus = [
   {
     title: "Быстрые действия",
@@ -88,11 +94,11 @@ const menus = [
       <div class="carView flex flex-col mt-12 gap-2">
         <img src="/bmw_large.png" />
         <div class="flex flex-col gap-2">
-          <span class="text-xl text-white font-semibold">BMW 530d G30</span>
-          <span> Пробег 98909 км</span>
+          <span class="text-xl text-white font-semibold">{{ `${car?.brand} ${car?.model}` }} </span>
+          <span> Пробег {{ mileage }} км</span>
           <div class="flex flex-row gap-2 items-center">
             <div class="h-2 w-2 rounded-full bg-[#FFAC0A]"></div>
-              <span> Последнее ТО - 9000 км назад (05.04.2024)</span>
+              <span> Предыдущее ТО - {{ previousService?.date }} км назад ({{ previousService?.mileage }})</span>
           </div>
         </div>
       </div>
